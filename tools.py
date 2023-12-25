@@ -55,6 +55,10 @@ class Routine:
     def length(self):
         return sum([abs(pre - after) for pre, after in zip(self.points[0:-1], self.points[1:])])
 
+    def _length(self):
+        return (sum([abs(pre - after) for pre, after in zip(self.points[0:-1], self.points[1:])]) +
+                abs(self.points[-1]-self.points[0]))
+
     def exchange(self, index_1: int, index_2: int):
         self.points[index_1], self.points[index_2] = self.points[index_2], self.points[index_1]
 

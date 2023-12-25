@@ -8,6 +8,8 @@ points = Point.from_sequence([[565, 575], [25, 185], [345, 750], [945, 685], [84
                               [25, 230], [525, 1000], [580, 1175], [650, 1130], [1605, 620], [1220, 580], [1465, 200],
                               [1530, 5],
                               [845, 680], [725, 370]], offset=1)
+
+#points = Point.from_sequence([[565, 575], [25, 185], [345, 750], [945, 685]], offset=1)
 routine = Routine(points)
 
 
@@ -85,4 +87,4 @@ def exhaustive_indexing():
 
 
 if __name__ == "__main__":
-    annealing()
+    annealing(500)
