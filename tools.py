@@ -1,5 +1,6 @@
-from numbers import Real
+from collections.abc import MutableSequence
 from math import sqrt
+from numbers import Real
 from typing import Iterable, List
 
 
@@ -29,7 +30,7 @@ class Point:
         return [Point(*seq[i], i + offset) for i in range(len(seq))]
 
 
-class Routine:
+class Routine(MutableSequence):
     def __init__(self, points: Iterable[Point]):
         self.points = list(points)
 
@@ -38,6 +39,9 @@ class Routine:
 
     def __setitem__(self, index: int, point: Point):
         self.points[index] = point
+
+    def __delitem__(self, index: int):
+        self.points.pop(index)
 
     def __len__(self):
         return len(self.points)
@@ -48,6 +52,9 @@ class Routine:
             string += f'{point.name}: ({point[0]}, {point[1]}) \n'
         string += ")"
         return string
+
+    def insert(self, index: int, point: Point):
+        self.points.insert(index, point)
 
     def append(self, point: Point):
         self.points.append(point)
